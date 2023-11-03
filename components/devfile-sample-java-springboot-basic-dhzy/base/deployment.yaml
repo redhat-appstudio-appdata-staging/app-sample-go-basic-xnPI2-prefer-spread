@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-java-springboot-basic-dhzy
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-java-springboot-basic-dhzy
+    app.kubernetes.io/part-of: app-sample-go-basic
+  name: devfile-sample-java-springboot-basic-dhzy
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: java-springboot-app
+      app.kubernetes.io/instance: devfile-sample-java-springboot-basic-dhzy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-springboot-app
+        app.kubernetes.io/instance: devfile-sample-java-springboot-basic-dhzy
+    spec:
+      containers:
+      - image: quay.io/redhat-user-workloads-stage/abhindas-tenant/app-sample-go-basic/devfile-sample-java-springboot-basic-dhzy@sha256:fe03054127a083ce4ad40ab200cb7910979f7cf2b754ef285a21c18d41348e14
+        name: my-java-springboot
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 180Mi
+status: {}
